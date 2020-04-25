@@ -233,6 +233,52 @@
         }
         }
         
+7. Прописаны ссылки для страниц редактирования уроков и студентов:<br>
+        
+         li{ navLink("/editL"){+"Edit lesson"} }
+         li{ navLink("/editS"){+"Edit student"} }
+         
+8. В switch прописаны маршруты и вывод компонентов редактирования на экран:<br>
+Для редактирования уроков:<br>
+        
+        route("/editL",
+                exact = true,
+                render = {
+                        editElement(
+                            RBuilder::displayLesson,
+                            RBuilder::editLesson,
+                            state.lessons,
+                            addLesson(),
+                            state.lessons.mapIndexed { index, lesson ->
+                                editL(index,lesson)
+                            }.toTypedArray(),
+                            state.lessons.mapIndexed{index, lesson ->
+                                deleteLesson(index)
+                            }.toTypedArray()
+                        )
+                }
+            )
+            
+ Для редактирования студентов:<br>
+        
+        route("/editS",
+                exact = true,
+                render = {
+                    editElement(
+                        RBuilder::displayStudent,
+                        RBuilder::editStudent,
+                        state.students,
+                        addStudent(),
+                        state.students.mapIndexed { index, student ->
+                            editS(index,student)
+                        }.toTypedArray(),
+                        state.students.mapIndexed { index, student ->
+                            deleteStudent(index)
+                        }.toTypedArray()
+                    )
+                }
+            )
+            
 Открыта страница для редактирования уроков:<br>
 ![](/screen8/editLesson.png)<br>
 Добавление урока:<br>
