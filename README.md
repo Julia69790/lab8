@@ -201,6 +201,7 @@
         val newStudent = Student("${myinput1.value}","${myinput2.value}")
         setState{
             students += newStudent
+            presents += arrayOf(Array(state.lessons.size){ false })
         }
         }
         
