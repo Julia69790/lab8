@@ -12,8 +12,6 @@ import kotlin.browser.document
 import kotlin.reflect.KClass
 
 interface AppProps : RProps {
-    //var lessons: Array<Lesson>
-    //var students: Array<Student>
 }
 
 interface AppState : RState {
@@ -172,6 +170,7 @@ class App : RComponent<AppProps, AppState>() {
         val newStudent = Student("${myinput1.value}","${myinput2.value}")
         setState{
             students += newStudent
+            presents += arrayOf(Array(state.lessons.size){ false })
         }
     }
 
